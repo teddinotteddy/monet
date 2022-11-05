@@ -2,9 +2,6 @@ import { Client, GatewayIntentBits, Routes } from "discord.js"
 import { Configuration, OpenAIApi } from "openai";
 import dotenv from "dotenv"
 import { REST } from "@discordjs/rest"
-import express from "express"
-
-const app = express();
 
 dotenv.config()
 
@@ -89,5 +86,3 @@ async function main() {
 }
 
 main()
-
-app.listen(PORT, () => console.log(`It's alive on http://localhost:${PORT}`) )
