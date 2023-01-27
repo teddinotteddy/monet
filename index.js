@@ -16,7 +16,7 @@ const API_KEY = process.env.API_KEY
 const PORT = process.env.PORT
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '/index.html'));
+    res.sendFile("./public/index.html");
 });
 
 const configuration = new Configuration({
