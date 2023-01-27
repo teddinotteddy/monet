@@ -2,14 +2,22 @@ import { Client, GatewayIntentBits, Routes } from "discord.js"
 import { Configuration, OpenAIApi } from "openai";
 import dotenv from "dotenv"
 import { REST } from "@discordjs/rest"
+import express from "express"
+import path from "path"
 
 dotenv.config()
+
+const app = express()
 
 const TOKEN = process.env.TOKEN
 const CLIENT_ID = process.env.CLIENT_ID
 const GUILD_ID = process.env.GUILD_ID
 const API_KEY = process.env.API_KEY
 const PORT = process.env.PORT
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '/index.html'));
+});
 
 const configuration = new Configuration({
     apiKey: API_KEY
@@ -86,3 +94,7 @@ async function main() {
 }
 
 main()
+app.listen(
+    PORT,
+    () => console.log(`It's alive! On http://localhost:${PORT}`)
+)
