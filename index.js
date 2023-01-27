@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import { REST } from "@discordjs/rest"
 import express from "express"
 import path from "path"
+import { fileURLToPath } from 'url';
 
 dotenv.config()
 
@@ -15,9 +16,12 @@ const GUILD_ID = process.env.GUILD_ID
 const API_KEY = process.env.API_KEY
 const PORT = process.env.PORT
 
-app.get('/', function(req, res) {
-    res.sendFile("./public/index.html");
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname + "/index.html"))
+})
 
 const configuration = new Configuration({
     apiKey: API_KEY
