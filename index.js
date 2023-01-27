@@ -3,6 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 import dotenv from "dotenv"
 import { REST } from "@discordjs/rest"
 import express from "express"
+import path from "path"
 
 dotenv.config()
 
@@ -15,7 +16,7 @@ const API_KEY = process.env.API_KEY
 const PORT = process.env.PORT
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "index.html")
+    res.sendFile(path.resolve() + "index.html")
 })
 
 const configuration = new Configuration({
