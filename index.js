@@ -93,8 +93,8 @@ async function main() {
     }
 }
 
-main()
 app.listen(
     PORT,
     () => console.log(`It's alive! On http://localhost:${PORT}`)
 )
+main()
