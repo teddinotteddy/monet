@@ -39,7 +39,7 @@ client.on("interactionCreate", async (interaction) => {
         const prompt = interaction.options.get("prompt").value
         const channelid = interaction.channelId
 
-        interaction.reply("Painting, please wait a moment.")
+        interaction.channel.sendTyping()
 
         const result = await openai.createImage({
             prompt,
@@ -50,8 +50,7 @@ client.on("interactionCreate", async (interaction) => {
         const url =  result.data.data[0].url
         console.log(url)
 
-        const channel = client.channels.cache.get(channelid)
-        channel.send(`Prompt: ${prompt} Image link: ${url}`)
+        interaction.send(`Prompt: ${prompt} Image link: ${url}`)
     }
 })
 
